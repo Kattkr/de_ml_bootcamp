@@ -37,6 +37,35 @@ def show_all_products():
         connection.close()
     except Exception as error:
         print(f"Ошибка при чтении: {error}")
-show_all_products()
-#add_product('Sneakers Pacific Republic', 149.99, 'shoes', 3)
-show_all_products()
+
+
+
+while True:
+    print("\n=== МЕНЮ УПРАВЛЕНИЯ МАГАЗИНОМ ===")
+    print("1. Посмотреть все товары")
+    print("2. Добавить новый товар")
+    print("3. Выйти из программы")
+    
+    choice = input("Выбери действие (1, 2 или 3): ")
+    
+    if choice == "1":
+        # Вызываем нашу готовую функцию чтения
+        show_all_products()
+        
+    elif choice == "2":
+        # Собираем данные с клавиатуры
+        print("\n--- Ввод данных нового товара ---")
+        user_name = input("Введите название товара (например, Vinted Item): ")
+        user_price = float(input("Введите цену (например, 45.50): "))
+        user_category = input("Введите категорию (clothes/shoes/cosmetics): ")
+        user_stock = int(input("Введите количество на складе: "))
+        
+        # Передаем собранные переменные в нашу функцию добавления!
+        add_product(user_name, user_price, user_category, user_stock)
+        
+    elif choice == "3":
+        print("До встречи! Программа завершена.")
+        break  # Выходим из цикла
+        
+    else:
+        print("Неверный выбор! Напиши цифру 1, 2 или 3.")
